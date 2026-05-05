@@ -32,6 +32,7 @@
         <div class="card" style="margin-bottom:1.5rem">
             <div class="card-header">
                 <h2 class="card-title">Tabla de Posiciones</h2>
+                <button class="btn btn-amarillo btn-sm" onClick=exportarTablaCSV()>Descargar Tabla en un CSV</button>
             </div>
             <table class="standings-table">
                 <thead>
@@ -46,7 +47,8 @@
                 </thead>
                 <tbody id="standings-body">
                     <tr>
-                        <td colspan="6" style="text-align:center; padding:1rem; color:var(--gris-texto)">Cargando...
+                        <td colspan="6" style="text-align:center; padding:1rem; color:var(--gris-texto)">
+                            Cargando...
                         </td>
                     </tr>
                 </tbody>

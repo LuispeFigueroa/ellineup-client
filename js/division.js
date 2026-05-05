@@ -207,6 +207,32 @@ document.getElementById("modal-partido").addEventListener("click", function (e) 
     if (e.target === this) cerrarModalPartido();
 });
 
+function exportarTablaCSV() {
+    const filas = document.querySelectorAll("#standings-body tr");
+    if (!filas.length) return;
+
+    let csv = "Posicion,Equipo,JJ,G,P,CA\n";
+
+    filas.forEach((fila, i) => {
+        const celdas = fila.querySelectorAll("td");
+        if (celdas.length < 6) return;
+        const equipo = celdas[1].textContent.trim();
+        const jj = celdas[2].textContent.trim();
+        const g = celdas[3].textContent.trim();
+        const p = celdas[4].textContent.trim();
+        const ca = celdas[5].textContent.trim();
+        csv += `${i + 1},${equipo},${jj},${g},${p},${ca}\n`;
+    });
+
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "standings.csv";
+    a.click();
+    URL.revokeObjectURL(url);
+}
+
 // Cargar todo
 cargarDivision();
 cargarStandings();
