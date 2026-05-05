@@ -17,6 +17,9 @@ async function cargarEquipo() {
     }
 
     document.getElementById("breadcrumb-equipo").textContent = equipoData.nombre;
+    if (equipoData.logo_url) {
+        mostrarLogo(`${API_URL}${equipoData.logo_url}`);
+    }
 }
 
 async function cargarJugadores() {
@@ -95,6 +98,29 @@ async function eliminarJugador(id) {
 document.getElementById("modal-jugador").addEventListener("click", function (e) {
     if (e.target === this) cerrarModalJugador();
 });
+
+async function subirImagen() {
+    const input = document.getElementById("input-imagen");
+    if (!input.files[0]) return;
+
+    const formData = new FormData();
+    formData.append("imagen", input.files[0]);
+
+    const res = await uploadImagenEquipo(equipoId, formData);
+    if (res.logo_url) {
+        mostrarLogo(`${API_URL}${res.logo_url}`);
+    } else {
+        alert(res.error || "Error al subir la imagen");
+    }
+}
+
+function mostrarLogo(url) {
+    const img = document.getElementById("equipo-logo");
+    const placeholder = document.getElementById("equipo-logo-placeholder");
+    img.src = url;
+    img.style.display = "block";
+    placeholder.style.display = "none";
+}
 
 cargarEquipo();
 cargarJugadores();

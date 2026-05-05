@@ -128,3 +128,11 @@ async function getStandings(divisionId) {
     const res = await fetch(`${API_URL}/divisiones/${divisionId}/standings`);
     return res.json();
 }
+
+async function uploadImagenEquipo(id, formData) {
+    const res = await fetch(`${API_URL}/equipos/${id}/imagen`, {
+        method: "POST",
+        body: formData
+    });
+    return res.json();
+}
