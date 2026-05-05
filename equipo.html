@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElLineup — Equipo</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="header-logo">El<span>Lineup</span></a>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="index.html">Divisiones</a>
+            <span>›</span>
+            <a href="#" id="breadcrumb-division">División</a>
+            <span>›</span>
+            <span id="breadcrumb-equipo">...</span>
+        </div>
+
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:2rem;">
+            <div>
+                <h1 class="page-title" id="equipo-nombre">Cargando...</h1>
+                <p class="page-subtitle" id="equipo-division"></p>
+            </div>
+            <button class="btn btn-primary" onclick="abrirModalJugador()">+ Agregar Jugador</button>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title"> Jugadores</h2>
+                <span id="total-jugadores" style="color:var(--gris-texto); font-size:0.85rem"></span>
+            </div>
+            <div id="lista-jugadores">
+                <div class="empty-state">
+                    <p>Cargando jugadores...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Jugador -->
+    <div class="modal-overlay" id="modal-jugador">
+        <div class="modal">
+            <h2 class="modal-title" id="modal-jugador-titulo">Nuevo Jugador</h2>
+            <input type="hidden" id="jugador-id">
+            <div class="form-group">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-input" id="input-jugador-nombre" placeholder="Ej: Luis Figueroa">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Número</label>
+                <input type="number" class="form-input" id="input-jugador-numero" placeholder="Ej: 7" min="0">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Posición</label>
+                <select class="form-input" id="input-jugador-posicion">
+                    <option value="">Seleccionar posición</option>
+                    <option>Pitcher</option>
+                    <option>Catcher</option>
+                    <option>Primera base</option>
+                    <option>Segunda base</option>
+                    <option>Tercera base</option>
+                    <option>Short Stop</option>
+                    <option>Jardín izquierdo</option>
+                    <option>Jardín central</option>
+                    <option>Jardín derecho</option>
+                    <option>Bateador Designado</option>
+                </select>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="cerrarModalJugador()">Cancelar</button>
+                <button class="btn btn-primary" onclick="guardarJugador()">Guardar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/equipo.js"></script>
+</body>
+
+</html>

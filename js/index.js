@@ -64,7 +64,7 @@ async function guardarDivision() {
 }
 
 async function eliminarDivision(id) {
-    if (!confirm("¿Eliminar esta división? Se eliminarán todos sus equipos y partidos.")) return;
+    if (!confirm("¿Estas seguro de eliminar esta división? Se eliminarán todos sus equipos y partidos.")) return;
     await deleteDivision(id);
     cargarDivisiones();
 }
