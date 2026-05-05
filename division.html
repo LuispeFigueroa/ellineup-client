@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElLineup — División</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="header-logo">El<span>Lineup</span></a>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="index.html">Divisiones</a>
+            <span>›</span>
+            <span id="breadcrumb-nombre">...</span>
+        </div>
+
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:2rem;">
+            <div>
+                <h1 class="page-title" id="division-nombre">Cargando...</h1>
+                <p class="page-subtitle" id="division-temporada"></p>
+            </div>
+        </div>
+
+        <!-- Standings -->
+        <div class="card" style="margin-bottom:1.5rem">
+            <div class="card-header">
+                <h2 class="card-title">Tabla de Posiciones</h2>
+            </div>
+            <table class="standings-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Equipo</th>
+                        <th>JJ</th>
+                        <th>G</th>
+                        <th>P</th>
+                        <th>CA</th>
+                    </tr>
+                </thead>
+                <tbody id="standings-body">
+                    <tr>
+                        <td colspan="6" style="text-align:center; padding:1rem; color:var(--gris-texto)">Cargando...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Equipos -->
+        <div class="card" style="margin-bottom:1.5rem">
+            <div class="card-header">
+                <h2 class="card-title">Equipos</h2>
+                <button class="btn btn-primary btn-sm" onclick="abrirModalEquipo()">+ Agregar</button>
+            </div>
+            <div id="lista-equipos">
+                <div class="empty-state">
+                    <p>Cargando equipos...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Partidos -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Partidos</h2>
+                <button class="btn btn-primary btn-sm" onclick="abrirModalPartido()">+ Registrar</button>
+            </div>
+            <div id="lista-partidos">
+                <div class="empty-state">
+                    <p>Cargando partidos...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Equipo -->
+    <div class="modal-overlay" id="modal-equipo">
+        <div class="modal">
+            <h2 class="modal-title" id="modal-equipo-titulo">Nuevo Equipo</h2>
+            <input type="hidden" id="equipo-id">
+            <div class="form-group">
+                <label class="form-label">Nombre del equipo</label>
+                <input type="text" class="form-input" id="input-equipo-nombre" placeholder="Ej: Tigres">
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="cerrarModalEquipo()">Cancelar</button>
+                <button class="btn btn-primary" onclick="guardarEquipo()">Guardar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Partido -->
+    <div class="modal-overlay" id="modal-partido">
+        <div class="modal">
+            <h2 class="modal-title" id="modal-partido-titulo">Registrar Partido</h2>
+            <input type="hidden" id="partido-id">
+            <div class="form-group">
+                <label class="form-label">Equipo Local</label>
+                <select class="form-input" id="input-local"></select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Carreras Local</label>
+                <input type="number" class="form-input" id="input-carreras-local" value="0" min="0">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Equipo Visita</label>
+                <select class="form-input" id="input-visita"></select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Carreras Visita</label>
+                <input type="number" class="form-input" id="input-carreras-visita" value="0" min="0">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Campo</label>
+                <input type="text" class="form-input" id="input-campo" placeholder="Ej: Campo Marte">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Fecha</label>
+                <input type="date" class="form-input" id="input-fecha">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Estado</label>
+                <select class="form-input" id="input-estado">
+                    <option value="programado">Programado</option>
+                    <option value="final">Final</option>
+                </select>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="cerrarModalPartido()">Cancelar</button>
+                <button class="btn btn-primary" onclick="guardarPartido()">Guardar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/division.js"></script>
+</body>
+
+</html>
