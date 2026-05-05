@@ -1,0 +1,554 @@
+/* css/style.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ── Variables ── */
+:root {
+    --verde-campo: #2D6A4F;
+    --verde-claro: #40916C;
+    --verde-suave: #D8F3DC;
+    --amarillo-pelota: #E9C46A;
+    --amarillo-oscuro: #F4A261;
+    --blanco: #FFFFFF;
+    --gris-claro: #F8F9FA;
+    --gris-medio: #E9ECEF;
+    --gris-texto: #6C757D;
+    --negro: #1A1A2E;
+    --sombra: 0 2px 12px rgba(0, 0, 0, 0.08);
+    --sombra-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --radio: 12px;
+    --transicion: all 0.2s ease;
+}
+
+/* ── Reset ── */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--gris-claro);
+    color: var(--negro);
+    min-height: 100vh;
+}
+
+/* ── Header ── */
+header {
+    background-color: var(--verde-campo);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.header-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--blanco);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.header-logo span {
+    color: var(--amarillo-pelota);
+}
+
+.header-nav {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* ── Layout ── */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+.page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--negro);
+    margin-bottom: 0.25rem;
+}
+
+.page-subtitle {
+    color: var(--gris-texto);
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+}
+
+/* ── Botones ── */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: var(--transicion);
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: var(--verde-campo);
+    color: var(--blanco);
+}
+
+.btn-primary:hover {
+    background-color: var(--verde-claro);
+    box-shadow: var(--sombra-hover);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background-color: var(--gris-medio);
+    color: var(--negro);
+}
+
+.btn-secondary:hover {
+    background-color: #dee2e6;
+}
+
+.btn-danger {
+    background-color: #FFE5E5;
+    color: #C0392B;
+}
+
+.btn-danger:hover {
+    background-color: #FFCCCC;
+}
+
+.btn-amarillo {
+    background-color: var(--amarillo-pelota);
+    color: var(--negro);
+}
+
+.btn-amarillo:hover {
+    background-color: var(--amarillo-oscuro);
+    transform: translateY(-1px);
+}
+
+.btn-sm {
+    padding: 0.35rem 0.8rem;
+    font-size: 0.82rem;
+}
+
+/* ── Cards ── */
+.card {
+    background: var(--blanco);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    padding: 1.5rem;
+    transition: var(--transicion);
+}
+
+.card:hover {
+    box-shadow: var(--sombra-hover);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--negro);
+}
+
+/* ── Grid de divisiones ── */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+}
+
+.division-card {
+    background: var(--blanco);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    padding: 1.5rem;
+    border-left: 4px solid var(--verde-campo);
+    transition: var(--transicion);
+    cursor: pointer;
+}
+
+.division-card:hover {
+    box-shadow: var(--sombra-hover);
+    transform: translateY(-2px);
+    border-left-color: var(--amarillo-pelota);
+}
+
+.division-nombre {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--negro);
+    margin-bottom: 0.25rem;
+}
+
+.division-temporada {
+    color: var(--gris-texto);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+.division-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* ── Tabla de standings ── */
+.standings-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.standings-table th {
+    background-color: var(--verde-campo);
+    color: var(--blanco);
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 500;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.standings-table th:first-child {
+    border-radius: 8px 0 0 8px;
+}
+
+.standings-table th:last-child {
+    border-radius: 0 8px 8px 0;
+    text-align: center;
+}
+
+.standings-table td {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--gris-medio);
+}
+
+.standings-table td:last-child {
+    text-align: center;
+}
+
+.standings-table tr:last-child td {
+    border-bottom: none;
+}
+
+.standings-table tr:hover td {
+    background-color: var(--verde-suave);
+}
+
+.pos-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.pos-1 {
+    background-color: var(--amarillo-pelota);
+    color: var(--negro);
+}
+
+.pos-2 {
+    background-color: var(--gris-medio);
+    color: var(--negro);
+}
+
+.pos-3 {
+    background-color: #E8D5C4;
+    color: var(--negro);
+}
+
+.pos-n {
+    background-color: var(--gris-claro);
+    color: var(--gris-texto);
+}
+
+.equipo-link {
+    color: var(--verde-campo);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.equipo-link:hover {
+    color: var(--verde-claro);
+    text-decoration: underline;
+}
+
+/* ── Partidos ── */
+.partido-card {
+    background: var(--blanco);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+    transition: var(--transicion);
+}
+
+.partido-equipos {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+}
+
+.partido-equipo {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.partido-score {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.score-vs {
+    color: var(--gris-texto);
+    font-size: 0.8rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+}
+
+.partido-meta {
+    font-size: 0.8rem;
+    color: var(--gris-texto);
+    text-align: right;
+}
+
+.estado-badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.estado-final {
+    background-color: var(--verde-suave);
+    color: var(--verde-campo);
+}
+
+.estado-programado {
+    background-color: #FFF3CD;
+    color: #856404;
+}
+
+/* ── Jugadores ── */
+.jugador-row {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--gris-medio);
+    gap: 1rem;
+}
+
+.jugador-row:last-child {
+    border-bottom: none;
+}
+
+.jugador-numero {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--verde-suave);
+    color: var(--verde-campo);
+    font-weight: 700;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.jugador-info {
+    flex: 1;
+}
+
+.jugador-nombre {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.jugador-posicion {
+    font-size: 0.8rem;
+    color: var(--gris-texto);
+}
+
+.jugador-actions {
+    display: flex;
+    gap: 0.4rem;
+}
+
+/* ── Modal ── */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal {
+    background: var(--blanco);
+    border-radius: var(--radio);
+    padding: 2rem;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    animation: modalIn 0.2s ease;
+}
+
+@keyframes modalIn {
+    from {
+        transform: translateY(16px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+}
+
+/* ── Formularios ── */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--gris-texto);
+    margin-bottom: 0.35rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.65rem 0.9rem;
+    border: 1.5px solid var(--gris-medio);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--negro);
+    transition: var(--transicion);
+    outline: none;
+}
+
+.form-input:focus {
+    border-color: var(--verde-campo);
+    box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.1);
+}
+
+/* ── Sección header ── */
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+/* ── Breadcrumb ── */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--gris-texto);
+    margin-bottom: 1.5rem;
+}
+
+.breadcrumb a {
+    color: var(--verde-campo);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+/* ── Empty state ── */
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--gris-texto);
+}
+
+.empty-state p {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+    .partido-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .partido-meta {
+        text-align: left;
+    }
+
+    header {
+        padding: 0 1rem;
+    }
+}

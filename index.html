@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElLineup — Gestiona tu liga</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="header-logo">El<span>Lineup</span></a>
+    </header>
+
+    <div class="container">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:2rem;">
+            <div>
+                <h1 class="page-title">Divisiones</h1>
+                <p class="page-subtitle">Liga de Softball de Guatemala — Temporada 2025</p>
+            </div>
+            <button class="btn btn-primary" onclick="abrirModalCrear()">+ Nueva División</button>
+        </div>
+
+        <div class="grid" id="lista-divisiones">
+            <div class="empty-state">
+                <p>Cargando divisiones...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal crear/editar división -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal">
+            <h2 class="modal-title" id="modal-titulo">Nueva División</h2>
+            <input type="hidden" id="division-id">
+            <div class="form-group">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-input" id="input-nombre" placeholder="Ej: División Mayor">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Temporada</label>
+                <input type="text" class="form-input" id="input-temporada" placeholder="Ej: 2025">
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="cerrarModal()">Cancelar</button>
+                <button class="btn btn-primary" onclick="guardarDivision()">Guardar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
