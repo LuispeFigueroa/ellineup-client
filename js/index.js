@@ -1,5 +1,9 @@
 async function cargarDivisiones() {
     const divisiones = await getDivisiones();
+    renderDivisiones(divisiones);
+}
+
+function renderDivisiones(divisiones) {
     const lista = document.getElementById("lista-divisiones");
 
     if (!divisiones || divisiones.length === 0) {
@@ -12,7 +16,7 @@ async function cargarDivisiones() {
     }
 
     lista.innerHTML = divisiones.map(d => `
-        <div class="division-card" >
+        <div class="division-card">
             <div onclick="window.location.href='division.html?id=${d.id}'" style="cursor:pointer">
                 <div class="division-nombre">${d.nombre}</div>
                 <div class="division-temporada">Temporada ${d.temporada}</div>
@@ -61,6 +65,11 @@ async function guardarDivision() {
 
     cerrarModal();
     cargarDivisiones();
+}
+async function buscarDivisiones() {
+    const q = document.getElementById("input-busqueda").value;
+    const divisiones = await getDivisiones(q);
+    renderDivisiones(divisiones);
 }
 
 async function eliminarDivision(id) {

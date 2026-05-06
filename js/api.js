@@ -1,9 +1,11 @@
 const API_URL = "http://localhost:8080";
 
 // Divisiones
-//obtener todas las divisiones
-async function getDivisiones() {
-    const res = await fetch(`${API_URL}/divisiones`);
+//obtener todas las divisiones/poder buscar una por nombre
+
+async function getDivisiones(q = "") {
+    const url = q ? `${API_URL}/divisiones?q=${encodeURIComponent(q)}` : `${API_URL}/divisiones`;
+    const res = await fetch(url);
     return res.json();
 }
 //crear una division
