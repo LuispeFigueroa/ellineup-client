@@ -23,6 +23,11 @@
             <button class="btn btn-primary" onclick="abrirModalCrear()">+ Nueva División</button>
         </div>
 
+        <div style="margin-bottom:1.5rem;">
+            <input type="text" class="form-input" id="input-busqueda" placeholder="🔍 Buscar división..."
+                oninput="buscarDivisiones()" style="max-width:360px;">
+        </div>
+
         <div class="grid" id="lista-divisiones">
             <div class="empty-state">
                 <p>Cargando divisiones...</p>
