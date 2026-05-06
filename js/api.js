@@ -39,8 +39,11 @@ async function getEquipos(divisionId) {
     return res.json();
 }
 //Un equipo especifico
-async function getEquipo(id) {
-    const res = await fetch(`${API_URL}/equipos/${id}`);
+async function getEquipos(divisionId, q = "") {
+    const url = q
+        ? `${API_URL}/divisiones/${divisionId}/equipos?q=${encodeURIComponent(q)}`
+        : `${API_URL}/divisiones/${divisionId}/equipos`;
+    const res = await fetch(url);
     return res.json();
 }
 //crear un equipo 

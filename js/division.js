@@ -36,16 +36,21 @@ async function cargarStandings() {
     }).join("");
 }
 
+
 async function cargarEquipos() {
     equipos = await getEquipos(divisionId);
-    const lista = document.getElementById("lista-equipos");
+    renderEquipos(equipos);
+}
 
-    if (!equipos || equipos.length === 0) {
-        lista.innerHTML = `<div class="empty-state"><p>No hay equipos registrados.</p></div>`;
+function renderEquipos(lista) {
+    const contenedor = document.getElementById("lista-equipos");
+
+    if (!lista || lista.length === 0) {
+        contenedor.innerHTML = `<div class="empty-state"><p>No se encontraron equipos.</p></div>`;
         return;
     }
 
-    lista.innerHTML = equipos.map(e => `
+    contenedor.innerHTML = lista.map(e => `
         <div class="jugador-row">
             <div class="jugador-info">
                 <div class="jugador-nombre">
@@ -59,6 +64,12 @@ async function cargarEquipos() {
             </div>
         </div>
     `).join("");
+}
+
+async function buscarEquipos() {
+    const q = document.getElementById("input-busqueda-equipos").value;
+    const resultados = await getEquipos(divisionId, q);
+    renderEquipos(resultados);
 }
 
 async function cargarPartidos() {
