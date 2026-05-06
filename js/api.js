@@ -38,7 +38,11 @@ async function getEquipos(divisionId) {
     const res = await fetch(`${API_URL}/divisiones/${divisionId}/equipos`);
     return res.json();
 }
-//Un equipo especifico
+async function getEquipo(id) {
+    const res = await fetch(`${API_URL}/equipos/${id}`);
+    return res.json();
+}
+//todos los equipos de una division con busqueda opcional
 async function getEquipos(divisionId, q = "") {
     const url = q
         ? `${API_URL}/divisiones/${divisionId}/equipos?q=${encodeURIComponent(q)}`
