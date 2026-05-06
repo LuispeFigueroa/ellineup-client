@@ -150,7 +150,6 @@ function abrirModalPartido() {
     document.getElementById("input-carreras-visita").value = 0;
     document.getElementById("input-campo").value = "";
     document.getElementById("input-fecha").value = "";
-    document.getElementById("input-estado").value = "programado";
     llenarSelectEquipos();
     document.getElementById("modal-partido").classList.add("active");
 }
@@ -163,7 +162,6 @@ async function abrirModalPartidoEditar(id) {
     document.getElementById("input-carreras-visita").value = partido.carreras_visita;
     document.getElementById("input-campo").value = partido.campo;
     document.getElementById("input-fecha").value = partido.fecha ? partido.fecha.split("T")[0] : "";
-    document.getElementById("input-estado").value = partido.estado;
     llenarSelectEquipos(partido.equipo_local_id, partido.equipo_visita_id);
     document.getElementById("modal-partido").classList.add("active");
 }
@@ -181,15 +179,28 @@ function cerrarModalPartido() {
 }
 
 async function guardarPartido() {
+    const localId = document.getElementById("input-local").value;
+    const visitaId = document.getElementById("input-visita").value;
+    const fecha = document.getElementById("input-fecha").value;
+
+    if (!fecha) {
+        alert("Por favor selecciona una fecha para el partido.");
+        return;
+    }
+    if (localId === visitaId) {
+        alert("El equipo local y el equipo visita no pueden ser el mismo.");
+        return;
+    }
+
     const id = document.getElementById("partido-id").value;
     const data = {
-        equipo_local_id: parseInt(document.getElementById("input-local").value),
-        equipo_visita_id: parseInt(document.getElementById("input-visita").value),
+        equipo_local_id: parseInt(localId),
+        equipo_visita_id: parseInt(visitaId),
         carreras_local: parseInt(document.getElementById("input-carreras-local").value),
         carreras_visita: parseInt(document.getElementById("input-carreras-visita").value),
         campo: document.getElementById("input-campo").value,
-        fecha: document.getElementById("input-fecha").value,
-        estado: document.getElementById("input-estado").value
+        fecha: fecha,
+        estado: "final"
     };
 
     if (id) {
