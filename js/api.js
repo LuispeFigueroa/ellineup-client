@@ -1,5 +1,4 @@
-const API_URL = "http://localhost:8080";
-
+const API_URL = "https://ellineup-api-production.up.railway.app";
 // Divisiones
 //obtener todas las divisiones/poder buscar una por nombre
 
