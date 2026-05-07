@@ -10,7 +10,15 @@ Frontend de ElLineup — plataforma para gestionar ligas de softball. Construido
 
 ##  Screenshot
 
-![ElLineup](screenshot.png)
+Pantalla divisiones:
+<img width="1918" height="1026" alt="Screenshot DIvisiones" src="https://github.com/user-attachments/assets/241fb167-3c1d-4256-8055-8ee1d1b364b1" />
+
+Pantalla equipos y standings:
+<img width="1917" height="927" alt="Screenshot equipo" src="https://github.com/user-attachments/assets/97863eef-a460-49f1-a3b9-87315062a744" />
+
+Pantalla Equipo:
+<img width="1918" height="905" alt="Screenshot pantalla equipos" src="https://github.com/user-attachments/assets/e5c24161-d741-456c-a0b9-6f8b2c154ab0" />
+
 
 ## Correr localmente
 
