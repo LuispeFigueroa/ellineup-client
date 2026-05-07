@@ -18,7 +18,11 @@ async function cargarEquipo() {
 
     document.getElementById("breadcrumb-equipo").textContent = equipoData.nombre;
     if (equipoData.logo_url) {
-        mostrarLogo(`${API_URL}${equipoData.logo_url}`);
+        if (equipoData.logo_url.startsWith("data:")) {
+            mostrarLogo(equipoData.logo_url);
+        } else {
+            mostrarLogo(`${API_URL}${equipoData.logo_url}`);
+        }
     }
 }
 
