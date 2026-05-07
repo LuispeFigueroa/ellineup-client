@@ -103,24 +103,13 @@ async function subirImagen() {
     const input = document.getElementById("input-imagen");
     if (!input.files[0]) return;
 
-    const file = input.files[0];
     const formData = new FormData();
-    formData.append("imagen", file);
+    formData.append("imagen", input.files[0]);
 
     try {
         const res = await uploadImagenEquipo(equipoId, formData);
         if (res.logo_url) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const img = document.getElementById("equipo-logo");
-                const placeholder = document.getElementById("equipo-logo-placeholder");
-                img.onload = null;
-                img.onerror = null;
-                img.src = e.target.result;
-                img.style.display = "block";
-                placeholder.style.display = "none";
-            };
-            reader.readAsDataURL(file);
+            mostrarLogo(res.logo_url);
         } else {
             alert(res.error || "Error al subir la imagen");
         }
